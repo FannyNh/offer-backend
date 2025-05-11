@@ -47,9 +47,7 @@ public class UserController {
         List<User> users = userService.get();
 
         return users.stream()
-                .map((user) -> {
-                    return apiDomainUserMapper.toApi(user);
-                })
+                .map(apiDomainUserMapper::toApi)
                 .toList();
     }
 

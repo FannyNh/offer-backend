@@ -17,7 +17,7 @@ public class UserEntity {
     String firstName;
     @Column(name = "last_name")
     String lastName;
-    @Column(name = "email")
+    @Column(name = "email", unique=true)
     String email;
     @Column(name = "password")
     String password;
