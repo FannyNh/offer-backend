@@ -2,8 +2,9 @@ package com.thirdmoira.offer_backend.api;
 
 // Import des annotations nécessaires de Spring
 
-import com.thirdmoira.offer_backend.api.rest.ApiCreateUserRequest;
+import com.thirdmoira.offer_backend.api.rest.ApiCreateOrUpdateUserRequest;
 import com.thirdmoira.offer_backend.api.rest.ApiUser;
+import com.thirdmoira.offer_backend.data.mappers.ApiDomainUserMapper;
 import com.thirdmoira.offer_backend.domain.UserService;
 import com.thirdmoira.offer_backend.domain.models.User;
 import lombok.extern.slf4j.Slf4j;
@@ -22,9 +23,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ApiDomainUserMapper apiDomainUserMapper;
+
     @PutMapping(consumes = "application/json", produces = "application/json")
 
-    public ApiUser createOrUpdateUser(@RequestBody ApiCreateUserRequest request) {
+    public ApiUser createOrUpdateUser(@RequestBody ApiCreateOrUpdateUserRequest request) {
         log.info("request creat user :" + request);
         // Retourne le user creer
         User newUser = userService.createOrUpdate(request.getFirstName(),
@@ -34,7 +38,7 @@ public class UserController {
                 request.getGroupId(),
                 request.getUserId());
 
-        return toApi(newUser);
+        return apiDomainUserMapper.toApi(newUser);
     }
 
     @GetMapping(produces = "application/json")
@@ -43,18 +47,11 @@ public class UserController {
         List<User> users = userService.get();
 
         return users.stream()
-                .map(UserController::toApi)
+                .map((user) -> {
+                    return apiDomainUserMapper.toApi(user);
+                })
                 .toList();
     }
 
-    private static ApiUser toApi(User save) {
-        ApiUser newUser = new ApiUser();
-        newUser.setUserId(save.getUserId());
-        newUser.setFirstName(save.getFirstName());
-        newUser.setLastName(save.getLastName());
-        newUser.setEmail(save.getEmail());
-        newUser.setPassword(save.getPassword());
-        newUser.setGroupId(save.getGroupId());
-        return newUser;
-    }
+
 }
