@@ -12,15 +12,17 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Long userId;
+    private Long userId;
     @Column(name = "first_name")
-    String firstName;
+    private String firstName;
     @Column(name = "last_name")
-    String lastName;
+    private String lastName;
     @Column(name = "email", unique=true)
-    String email;
+    private String email;
     @Column(name = "password")
-    String password;
-    @Column(name = "group_id")
-    Long groupId;
+    private String password;
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private GroupEntity group;
+
 }
