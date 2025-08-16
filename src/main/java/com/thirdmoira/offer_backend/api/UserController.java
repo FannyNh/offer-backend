@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // Annotation pour dire que cette classe est un contrôleur REST
@@ -49,6 +50,14 @@ public class UserController {
         return users.stream()
                 .map(apiDomainUserMapper::toApi)
                 .toList();
+    }
+
+    @DeleteMapping("/{id}")
+
+    public void deleteUser(@PathVariable long id) {
+        log.info("delete test");
+        userService.delete(id);
+
     }
 
 

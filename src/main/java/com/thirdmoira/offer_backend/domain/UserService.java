@@ -29,4 +29,8 @@ public class UserService {
     public List<User> get() {
         return userRepository.get();
     }
+
+    public void delete(long id) {
+        userRepository.delete(id);
+    }
 }

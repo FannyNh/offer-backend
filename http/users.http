@@ -25,3 +25,7 @@ Accept: application/json
   "groupId": 1
 
 }
+
+### DELETE request to delete user
+DELETE http://localhost:8080/api/users/1
+
