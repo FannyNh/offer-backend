@@ -1,6 +1,5 @@
 package com.thirdmoira.offer_backend.data.exceptions;
 
-import com.thirdmoira.offer_backend.data.exceptions.EmailAlreadyExistException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -12,8 +11,8 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(EmailAlreadyExistException.class)
-    public ResponseEntity<Map<String, Object>> handleEmailAlreadyExistException(EmailAlreadyExistException ex) {
+    @ExceptionHandler({EmailAlreadyExistException.class,NameAlreadyExistException.class})
+    public ResponseEntity<Map<String, Object>> handleAlreadyExistException(Exception ex) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(Map.of(

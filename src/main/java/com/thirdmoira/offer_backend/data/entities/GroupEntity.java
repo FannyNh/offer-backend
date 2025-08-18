@@ -15,7 +15,7 @@ public class GroupEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long groupId;
-    @Column(name = "group_name")
+    @Column(name = "group_name", unique=true)
     private String groupName;
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private List<UserEntity> users;

@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface ApiDomainUserMapper {
-    ApiUser toApi(User save);
+    ApiUser toApi(User user);
 }
 
 
