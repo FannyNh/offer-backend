@@ -16,19 +16,17 @@ import java.util.List;
 
 // Annotation pour dire que cette classe est un contrôleur REST
 @RestController
-
 // Spécifie la route de base pour toutes les requêtes traitées par ce contrôleur
 @RequestMapping("/api/users")
+// permet de generer les logs
 @Slf4j
 public class UserController {
     @Autowired
     private UserService userService;
-
     @Autowired
     private ApiDomainUserMapper apiDomainUserMapper;
 
     @PutMapping(consumes = "application/json", produces = "application/json")
-
     public ApiUser createOrUpdateUser(@RequestBody ApiCreateOrUpdateUserRequest request) {
         log.info("request creat user :" + request);
         // Retourne le user creer
@@ -53,7 +51,6 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-
     public void deleteUser(@PathVariable long id) {
         log.info("delete test");
         userService.delete(id);

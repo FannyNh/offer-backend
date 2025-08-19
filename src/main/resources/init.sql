@@ -18,3 +18,14 @@ CREATE TABLE IF NOT EXISTS users (
         REFERENCES groups(id)
         ON DELETE SET NULL
 );
+
+CREATE TABLE IF NOT EXISTS offers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    description VARCHAR(1000),
+    user_id BIGINT,
+    CONSTRAINT fk_user
+        FOREIGN KEY (user_id)
+        REFERENCES users(id)
+        ON DELETE SET NULL
+);

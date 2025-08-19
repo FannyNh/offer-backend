@@ -1,0 +1,10 @@
+### PUT request to create user
+PUT http://localhost:8080/api/offers
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "spa puppy",
+  "description": "prestation bien etre chien",
+  "userId": 199
+}

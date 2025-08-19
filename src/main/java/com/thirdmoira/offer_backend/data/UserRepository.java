@@ -14,9 +14,9 @@ import java.util.Optional;
 @Component
 public class UserRepository {
     @Autowired
-    UserJpaRepository jpaRepository;
+    private  UserJpaRepository jpaRepository;
     @Autowired
-    EntityDomainUserMapper entityDomainUserMapper;
+    private EntityDomainUserMapper entityDomainUserMapper;
     public User createOrUpdate(String firstName, String lastName, String email, String password, Long groupId, Long userId) {
 
         UserEntity user = entityDomainUserMapper.toEntity(firstName, lastName, email, password, groupId,userId);

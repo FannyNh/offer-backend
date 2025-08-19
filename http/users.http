@@ -21,8 +21,8 @@ Accept: application/json
   "lastName": "cjkbks",
   "email": "cjkbks",
   "password": "cjkbks",
-  "userId": 1,
-  "groupId": 1
+  "userId": 2,
+  "groupId": 2
 
 }
 
