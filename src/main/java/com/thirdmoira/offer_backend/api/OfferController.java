@@ -7,10 +7,9 @@ import com.thirdmoira.offer_backend.domain.OfferService;
 import com.thirdmoira.offer_backend.domain.models.Offer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/offers")
@@ -36,4 +35,15 @@ public class OfferController {
         return apiDomainOfferMapper.toApi(newOffer);
     }
 
+    @GetMapping(produces = "application/json")
+    public List<ApiOffer> getOffers(){
+        log.info("get list offers");
+        List<Offer> offers = offerService.get();
+        return offers.stream().map(apiDomainOfferMapper::toApi).toList();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteOffer(@PathVariable Long id){
+        offerService.delete(id);
+    }
 }

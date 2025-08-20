@@ -8,3 +8,9 @@ Accept: application/json
   "description": "prestation bien etre chien",
   "userId": 199
 }
+
+### GET request to get offers
+GET http://localhost:8080/api/offers
+
+### DELETE request to delete an offer by id
+DELETE  http://localhost:8080/api/offers/1

@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 public class OfferService {
@@ -13,5 +15,15 @@ public class OfferService {
     private OfferRepository offerRepository;
     public Offer createOrUpdate(String name, Long id, String description, Long userId) {
                 return offerRepository.createOrUpdate( name,  id,  description,  userId);
+    }
+
+    public List<Offer> get() {
+        return  offerRepository.get();
+    }
+
+
+
+    public void delete(Long id) {
+        offerRepository.delete(id);
     }
 }

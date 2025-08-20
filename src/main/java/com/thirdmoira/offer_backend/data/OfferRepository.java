@@ -7,6 +7,8 @@ import com.thirdmoira.offer_backend.domain.models.Offer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class OfferRepository {
     @Autowired
@@ -20,5 +22,16 @@ public class OfferRepository {
 
         OfferEntity save = jpaRepository.save(offer);
         return entityDomainOfferMapper.toDomain(save);
+    }
+
+    public List<Offer> get() {
+        List<OfferEntity> offers = jpaRepository.findAll();
+
+
+        return offers.stream().map(entityDomainOfferMapper::toDomain).toList();
+    }
+
+    public void delete(Long id) {
+        jpaRepository.deleteById(id);
     }
 }

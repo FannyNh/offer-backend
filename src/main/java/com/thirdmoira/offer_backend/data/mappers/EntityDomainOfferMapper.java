@@ -11,6 +11,8 @@ public interface EntityDomainOfferMapper {
     @Mapping(target = "user", expression = "java(mapUser(userId))")
     OfferEntity toEntity(String name, Long id, String description, Long userId);
 
+    @Mapping(source = "save.user.userId", target = "userId")
+    Offer toDomain(OfferEntity save);
 
     @SuppressWarnings("unused")
     default UserEntity mapUser(Long userId) {
@@ -21,6 +23,5 @@ public interface EntityDomainOfferMapper {
         return user;
     }
 
-    @Mapping(source = "save.user.userId", target = "userId")
-    Offer toDomain(OfferEntity save);
+
 }
