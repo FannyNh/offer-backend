@@ -34,4 +34,14 @@ public class OfferRepository {
     public void delete(Long id) {
         jpaRepository.deleteById(id);
     }
+
+    public Offer update(String name, Long id, String description, Long userId) {
+        return null;
+    }
+
+    public Offer create(String name, Long id, String description, Long userId) {
+        OfferEntity newOffer = entityDomainOfferMapper.toEntity(name, id, description, userId);
+        OfferEntity save = jpaRepository.save(newOffer);
+        return entityDomainOfferMapper.toDomain(save);
+    }
 }

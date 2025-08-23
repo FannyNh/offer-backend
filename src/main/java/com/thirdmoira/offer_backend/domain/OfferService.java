@@ -14,7 +14,10 @@ public class OfferService {
     @Autowired
     private OfferRepository offerRepository;
     public Offer createOrUpdate(String name, Long id, String description, Long userId) {
-                return offerRepository.createOrUpdate( name,  id,  description,  userId);
+                if(id != null) {
+                    return offerRepository.update( name,  id,  description,  userId);
+                }
+                return offerRepository.create( name,  id,  description,  userId);
     }
 
     public List<Offer> get() {
