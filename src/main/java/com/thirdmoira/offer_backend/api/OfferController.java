@@ -36,14 +36,14 @@ public class OfferController {
     }
 
     @GetMapping(produces = "application/json")
-    public List<ApiOffer> getOffers(){
+    public List<ApiOffer> getOffers() {
         log.info("get list offers");
         List<Offer> offers = offerService.get();
         return offers.stream().map(apiDomainOfferMapper::toApi).toList();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteOffer(@PathVariable Long id){
+    public void deleteOffer(@PathVariable Long id) {
         offerService.delete(id);
     }
 }

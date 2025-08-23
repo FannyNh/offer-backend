@@ -22,4 +22,16 @@ public class GlobalExceptionHandler {
                         "message", ex.getMessage()
                 ));
     }
+
+    @ExceptionHandler({UserNotExistException.class})
+    public ResponseEntity<Map<String, Object>> handleUserNotExistException(Exception ex) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of(
+                        "timestamp", LocalDateTime.now(),
+                        "status", HttpStatus.NOT_FOUND.value(),
+                        "error", HttpStatus.NOT_FOUND.getReasonPhrase(),
+                        "message", ex.getMessage()
+                ));
+    }
 }

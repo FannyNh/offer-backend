@@ -13,14 +13,7 @@ public class OfferEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "description")
-    private String description;
-
     @ManyToOne
     @JoinColumn(name="user_id")
     private UserEntity user;
-
-
 }

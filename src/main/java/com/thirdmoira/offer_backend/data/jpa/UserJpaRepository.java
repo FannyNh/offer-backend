@@ -9,5 +9,11 @@ import java.util.Optional;
 @Repository
 public interface UserJpaRepository extends JpaRepository<UserEntity, Long> {
     // Tu peux ajouter des méthodes personnalisées ici si besoin
+
+    /**
+     *
+     * @param email
+     * @return
+     */
     Optional<UserEntity> findByEmail(String email);
 }

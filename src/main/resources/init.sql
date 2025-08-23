@@ -96,6 +96,7 @@ CREATE TABLE IF NOT EXISTS offer_versions (
     offer_id INT,
     version_number INT NOT NULL,
     title VARCHAR,
+    offer_description VARCHAR(1000),
     currency VARCHAR(3) NOT NULL,
     valid_until DATE,
     notes TEXT,

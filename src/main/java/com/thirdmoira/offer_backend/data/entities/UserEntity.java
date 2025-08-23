@@ -24,7 +24,7 @@ public class UserEntity {
     private String lastName;
     @Column(name = "email", unique=true)
     private String email;
-    @Column(name = "password")
+    @Column(name = "password_hash")
     private String password;
     @ManyToOne
     @JoinColumn(name = "group_id")
