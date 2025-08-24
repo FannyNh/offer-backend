@@ -45,14 +45,10 @@ class OfferRepositoryTest {
                 .thenReturn(new Offer());
 
 
-
-
-
         when(entityDomainOfferVersionMapper.toEntity(any(), any(), any(), any())).thenReturn(new OfferVersionEntity());
         when(offerVersionJpaRepository.save(any(OfferVersionEntity.class)))
                 .thenReturn(new OfferVersionEntity());
-        when(entityDomainOfferVersionMapper.toDomain(any()))
-                .thenReturn(new OfferVersion());
+
 
 
         //when

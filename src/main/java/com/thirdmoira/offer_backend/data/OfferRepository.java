@@ -45,21 +45,22 @@ public class OfferRepository {
     }
 
     public Offer update(String name, Long id, String description, Long userId) {
-        return null;
+        OfferEntity newOffer = entityDomainOfferMapper.toEntity(name, id, description, userId);
+        OfferEntity save = jpaRepository.save(newOffer);
+        return entityDomainOfferMapper.toDomain(save);
     }
 
     public Offer create(String name, Long id, String description, Long userId, String title) {
         OfferEntity newOffer = entityDomainOfferMapper.toEntity(name, id, description, userId);
         OfferEntity save = jpaRepository.save(newOffer);
         if( save.getId() != null){
-            OfferVersion initVersion = initOfferVersion(save.getId(),title);
+            initOfferVersion(save.getId(),title);
         }
         return entityDomainOfferMapper.toDomain(save);
     }
 
-    private OfferVersion initOfferVersion(Long offerId, String title){
+    private void initOfferVersion(Long offerId, String title){
         OfferVersionEntity offerVersionNew = entityDomainOfferVersionMapper.toEntity(null,offerId,title,1L);
-        OfferVersionEntity save = jpaVersionRepository.save(offerVersionNew);
-        return entityDomainOfferVersionMapper.toDomain(save);
+       jpaVersionRepository.save(offerVersionNew);
     }
 }
