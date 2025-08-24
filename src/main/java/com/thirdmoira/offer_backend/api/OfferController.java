@@ -29,7 +29,8 @@ public class OfferController {
                 request.getName(),
                 request.getId(),
                 request.getDescription(),
-                request.getUserId()
+                request.getUserId(),
+                request.getTitle()
         );
 
         return apiDomainOfferMapper.toApi(newOffer);

@@ -13,11 +13,11 @@ import java.util.List;
 public class OfferService {
     @Autowired
     private OfferRepository offerRepository;
-    public Offer createOrUpdate(String name, Long id, String description, Long userId) {
+    public Offer createOrUpdate(String name, Long id, String description, Long userId, String title) {
                 if(id != null) {
                     return offerRepository.update( name,  id,  description,  userId);
                 }
-                return offerRepository.create( name,  id,  description,  userId);
+                return offerRepository.create( name,  id,  description,  userId, title);
     }
 
     public List<Offer> get() {
